@@ -13,9 +13,16 @@
 
 #include "Arduino.h"
 #include "VirtualWire_TX.h"
-#include <util/crc16.h>
+//#include <util/crc16.h>
 
+uint16_t _crc_ccitt_update (uint16_t crc, uint8_t data)
+{
+    data ^= lo8 (crc);
+    data ^= data << 4;
 
+    return ((((uint16_t)data << 8) | hi8 (crc)) ^ (uint8_t)(data >> 4)
+            ^ ((uint16_t)data << 3));
+}
 
 static uint8_t vw_tx_buf[(VW_MAX_MESSAGE_LEN * 2) + VW_HEADER_LEN]
      = {0x2a, 0x2a, 0x2a, 0x2a, 0x2a, 0x2a, 0x38, 0x2c};
@@ -99,8 +106,7 @@ static uint8_t vw_rx_good = 0;
 // Used to convert the high and low nybbles of the transmitted data
 // into 6 bit symbols for transmission. Each 6-bit symbol has 3 1s and 3 0s
 // with at most 2 consecutive identical bits
-static uint8_t symbols[] =
-{
+static uint8_t symbols[] ={
     0xd,  0xe,  0x13, 0x15, 0x16, 0x19, 0x1a, 0x1c,
     0x23, 0x25, 0x26, 0x29, 0x2a, 0x2c, 0x32, 0x34
 };
@@ -109,8 +115,7 @@ static uint8_t symbols[] =
 // Cant really do this as a real C++ class, since we need to have
 // an ISR
 */
-extern "C"
-{
+extern "C"{
 
 // Convert a 6 bit encoded symbol into its 4 bit decoded equivalent
 uint8_t vw_symbol_6to4(uint8_t symbol){
@@ -249,7 +254,7 @@ void vw_setup(uint16_t speed){
 
     // Set up digital IO pins
     pinMode(vw_tx_pin, OUTPUT);
-    pinMode(vw_rx_pin, INPUT);
+    //pinMode(vw_rx_pin, INPUT);
     pinMode(vw_ptt_pin, OUTPUT);
     digitalWrite(vw_ptt_pin, vw_ptt_inverted);
 }
