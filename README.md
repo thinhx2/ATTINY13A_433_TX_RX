@@ -12,7 +12,7 @@
 
 *This measure is not exact. It dependent on many factors*
 
-### Customize of Lib VirtualWire to VirtualWire_TX
+## Customize of Lib VirtualWire to VirtualWire_TX
 ##### Lib VirtualWire_TX in folder "433/transmitter/.."
 
 |       **Lib**     | **Size (bytes)** |
