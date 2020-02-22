@@ -10,3 +10,13 @@
 |   **40 m**   |  about 60%    |
 
 *This measure is not exact. It dependent on many factors*
+
+### Customize of Lib VirtualWire to VirtualWire_TX
+
+|       **Lib**     | **Size (bytes)** |
+|-------------------|------------------|
+|**VirtualWire**    |  2200    |
+|**VirtualWire_TX** |  2338    |
+
+#### <span style="color:red">VirtualWire_TX is NOT beater :(</span>
+#### <span style="color:red">We will have to fix some variables for optimization of code (size of compiled binary)</span>
