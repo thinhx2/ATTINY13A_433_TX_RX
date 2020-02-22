@@ -1,6 +1,7 @@
 # 433 MHz lib for ATTINY13A by using Arduino platform
-#### <span style="color:red">Project is NOT complete</span>
 
+- Project is NOT complete
+&nbsp;
 
 #### Communication distance test (direct visibility) by using antennas
 
@@ -19,5 +20,5 @@
 |**VirtualWire**    |  2200    |
 |**VirtualWire_TX** |  2338    |
 
-#### <span style="color:red">VirtualWire_TX is NOT beater :(</span>
-#### <span style="color:red">We will have to fix some variables for optimization of code (size of compiled binary)</span>
+- *VirtualWire_TX is NOT smaller and is not under 1KB*
+- *We will have to fix some variables for optimization of code (size of compiled binary)*
